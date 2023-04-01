@@ -2,6 +2,7 @@
   "name": "your_project_name",
   "version": "1.0.0",
   "description": "xxxx",
+  "homepage": "https://Lustytail.github.io/melon-clone",
   "scripts": {
     "start": "node build/init.js",
     "build": "npm run build:server && npm run build:assets",
