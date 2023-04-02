@@ -1,0 +1,12 @@
+extends base
+
+block content
+    div
+        each list in songList
+            div
+                h1= "제목 : " + list.song
+                h2= "아티스트 : " + list.artist
+                h2= "조회수 : " + list.views + "회"
+            br
+
+        
