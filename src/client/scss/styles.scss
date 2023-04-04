@@ -1,6 +1,6 @@
 // Config
 @import "./config/_variables.scss";
-@import "./config/_reset.scss";
+//@import "./config/_reset.scss";
 
 // Components
 
@@ -11,14 +11,195 @@
 // Example: @import "./screens/search.scss";
 
 // Defaults
-a {
+a { 
   color: inherit;
   text-decoration: none;
 }
-
+/*
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: $bg;
   color: white;
+}
+*/
+.backgroud {
+    background-color:  #11121e;
+    display: grid;
+    height: 95vh;
+    min-width: 300px;
+}
+
+/* 플레이어 공간*/
+.player-wrap {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px; 
+    flex: 1;
+    width: 70%;
+    min-width: 530px;
+    height: 70%;
+    background-color: #1e1f30;
+    justify-self: center;
+    align-self: center;
+}
+.view {   /* 왼쪽 리스트 공간 */
+    width: 65%;
+    padding: 5px;
+    height: 100%;
+    box-sizing: border-box;
+    min-width: 350px;
+}
+.list {   /* 오른쪽 플레이 리스트 공간 */
+    width: 35%;
+    padding: 5px;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #4a4d82;
+    box-sizing: border-box;
+    min-width: 180px;
+}
+
+/* 애니메이션 공간 */
+.fx {
+    color:antiquewhite;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    animation-direction: normal;
+    animation-duration: 1000ms;
+    animation-timing-function: cubic-bezier(0.7, 0.07, 0.63, 0.87);
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+.fx-drop-in {
+    opacity: 0;
+    transform: scale(1.4);
+    animation-name: dropIn;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(3vh);
+   }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+   }
+}
+.fade-in {
+    opacity: 0;
+    animation-name: fadeIn;
+}
+
+/* 음원 블록 공간 */
+.song-list {
+    border-radius: 10px;
+    display: flex;
+    height: 80%;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    box-sizing: border-box;
+}
+.song {     /* 음원 블록 */
+    background-color:  #878cc4;
+    display: flex;
+    border-radius: 10px;
+    margin: 10px; 
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+    min-width: 270px;
+}
+
+/* 이미지 공간 */
+.song-img{
+    width: 20%;
+    height: 60px;
+    text-align: center;
+}
+.img-round {
+    overflow: hidden;
+    text-indent: -1000px;
+    border-radius: 1000px;
+    border: 2px solid rgb(161, 104, 208);
+    /*margin-left: 10px;
+    margin-right: 10px;*/
+    background-color: #32334f;
+    background-image: linear-gradient(45deg, #32334f, #4f527e);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    width: 55px;
+    height: 90%;
+}
+
+/* 가수/제목 공간 */
+.song-text {
+    width: 50%;
+    height: 80px;
+}
+.song-info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* play 버튼 공간 */
+.song-btn {
+    width: 28%;
+    text-align: center;
+}
+.custom-btn {
+    width: 40px;
+    height: 30px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0px 16px 3px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  }
+  .btn-2 {
+    background: rgb(96,9,240);
+    background: linear-gradient(0deg, rgba(96,9,240,1) 0%, rgba(129,5,240,1) 100%);
+    border: none;
+  }
+  .btn-2:before {
+    height: 0%;
+    width: 2px;
+  }
+  .btn-2:hover {
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.2),
+      inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+  }
+.song-view {       /* 조회수 출력 */
+    margin-top: 3px;
+    margin-bottom: 0px;
+    font-size: smaller;
+}
+
+
+/* 스크롤바 */
+.song-list::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+.song-list::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #7c51cc; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+.song-list::-webkit-scrollbar-track {
+    background: rgb(69, 52, 96);  /*스크롤바 뒷 배경 색상*/
 }
