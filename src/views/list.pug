@@ -18,5 +18,11 @@ block content
                                 button.custom-btn.btn-2= "▶"
                                 p.song-view="(play : " + list.views + ")"
             .list 
-                div 
-                    h2.fx.fade-in= "My PlayList" 
+                h2.fx.fade-in= "My PlayList" 
+                .list-video 
+                    iframe.video(
+                        id="ytplayer"
+                        type="text/html"
+                        src="https://www.youtube.com/embed/"
+                        frameborder="0"
+                        allowfullscreen="allowfullscreen")

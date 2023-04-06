@@ -23,11 +23,13 @@ body {
   color: white;
 }
 */
+
+
 .backgroud {
     background-color:  #11121e;
     display: grid;
     height: 95vh;
-    min-width: 300px;
+    min-width: 800px;
 }
 
 /* 플레이어 공간*/
@@ -37,28 +39,27 @@ body {
     position: relative;
     border-radius: 5px; 
     flex: 1;
-    width: 70%;
-    min-width: 530px;
+    width: 90%;
+    min-width: 700px;
     height: 70%;
     background-color: #1e1f30;
     justify-self: center;
     align-self: center;
 }
 .view {   /* 왼쪽 리스트 공간 */
-    width: 65%;
+    width: 40%;
     padding: 5px;
     height: 100%;
     box-sizing: border-box;
     min-width: 350px;
 }
 .list {   /* 오른쪽 플레이 리스트 공간 */
-    width: 35%;
+    width: 60%;
     padding: 5px;
     height: 100%;
     border-radius: 10px;
     background-color: #4a4d82;
     box-sizing: border-box;
-    min-width: 180px;
 }
 
 /* 애니메이션 공간 */
@@ -138,10 +139,14 @@ body {
 .song-text {
     width: 50%;
     height: 80px;
+    box-sizing: border-box;
 }
 .song-info {
     margin-top: 10px;
     margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
@@ -188,6 +193,24 @@ body {
     margin-bottom: 0px;
     font-size: smaller;
 }
+
+/* video 공간 */
+.list-video {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 80%;
+    position: relative;
+}
+.video {
+    width: 80%;
+    height: 65%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 
 
 /* 스크롤바 */
