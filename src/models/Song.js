@@ -13,6 +13,10 @@ const songSchema = new mongoose.Schema(
         views: {
             type: Number,
             required: true
+        },
+        ytube_id: {
+            type: String,
+            required: false
         }
     },
     {

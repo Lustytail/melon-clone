@@ -8,13 +8,20 @@ const btn = document.querySelectorAll(".custom-btn");
 console.dir(btn);
 
 function playMusic() {
+  const video = document.querySelector("#ytplayer");
+  const url = `https://www.youtube.com/embed/${(this).id}`;
+
+  video.src = url;
+
+
+  /* last.fm api 연동 소스 
     const parent = (this).parentNode.parentNode;
-    const artist = parent.childNodes[3].childNodes[1].innerText;
-    const song = parent.childNodes[3].childNodes[3].innerText;
+    const artist = parent.childNodes[2].childNodes[0].innerText;
+    const song = parent.childNodes[2].childNodes[1].innerText;
 
     console.dir(artist + "  " + song);
     searchVideos(song, artist);
-
+    */
 }
 
 [].forEach.call(btn, function(button) {
@@ -23,7 +30,7 @@ function playMusic() {
 
 
 
-
+/* last.fm api function */
 function searchVideos(song, artist) {
   const url = ` http://ws.audioscrobbler.com/2.0/?method=track.search&track=${song}&artist=${artist}&api_key=${API_KEY}&format=json`;
   

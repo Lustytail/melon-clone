@@ -10,12 +10,14 @@ block content
                     each list in songList
                         .song.fx.fade-in 
                             .song-img 
-                                img.img-round(src="./you.pom.jpg")
+                                img.img-round(src="static/img/" + list.song + ".jpeg")
                             .song-text.fx
                                 .song-info=list.artist
                                 h3.song-info=list.song
                             .song-btn 
-                                button.custom-btn.btn-2= "▶"
+                                button.custom-btn.btn-2(
+                                    id=list.ytube_id
+                                )= "▶"
                                 p.song-view="(play : " + list.views + ")"
             .list 
                 h2.fx.fade-in= "My PlayList" 
@@ -23,6 +25,5 @@ block content
                     iframe.video(
                         id="ytplayer"
                         type="text/html"
-                        src="https://www.youtube.com/embed/"
                         frameborder="0"
                         allowfullscreen="allowfullscreen")
