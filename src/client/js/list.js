@@ -83,10 +83,9 @@ function addplaylist(song, artist, id) {
     `;
 
     element.onclick = function() {
-      parent_node = this.parentElement;
-      parent_node.removeChild(this);
+      plist_div.removeChild(this);
     }
-    
+
     plist_div.appendChild(element);
   }
 }
