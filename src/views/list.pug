@@ -2,28 +2,34 @@ extends base
 
 block content
     .backgroud
-        .player-wrap 
-            .view 
-                div 
-                    h2.fx.fade-in= "I'm New"
-                .song-list
-                    each list in songList
-                        .song.fx.fade-in 
-                            .song-img 
-                                img.img-round(src="static/img/" + list.song + ".jpeg")
-                            .song-text.fx
-                                .song-info=list.artist
-                                h3.song-info=list.song
-                            .song-btn 
-                                button.custom-btn.btn-2(
-                                    id=list.ytube_id
-                                )= "▶"
-                                p.song-view="(play : " + list.views + ")"
-            .list 
-                h2.fx.fade-in= "My PlayList" 
-                .list-video 
-                    iframe.video(
-                        id="ytplayer"
-                        type="text/html"
-                        frameborder="0"
-                        allowfullscreen="allowfullscreen")
+        .height-30
+        .hole-box
+            .player-wrap 
+                .view 
+                    .display-flex 
+                        h2#chart-title.fx.fade-in.display-inline-block= "Charts"
+                        h2.fx.fade-in.display-inline-block= "|"
+                        h2#playlist-title.fx.fade-in.display-inline-block.color-disable= "My PlayList"
+                    #chart-div.song-list
+                        each list in songList
+                            .song.fx.fade-in 
+                                .song-img 
+                                    img.img-round(src="static/img/" + list.song + ".jpeg")
+                                .song-text.fx
+                                    .song-info=list.artist
+                                    h3.song-info=list.song
+                                .song-btn 
+                                    button.custom-btn.btn-2(
+                                        id=list.ytube_id
+                                    )= "▶"
+                                    p.song-view="(play : " + list.views + ")"
+                    #playlist-div.song-list.hide
+                .list 
+                    h2.fx.fade-in= "Player" 
+                    .list-video 
+                        iframe.video(
+                            id="ytplayer"
+                            type="text/html"
+                            frameborder="0"
+                            allowfullscreen="allowfullscreen")
+        .height-30
