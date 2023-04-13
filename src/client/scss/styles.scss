@@ -168,7 +168,7 @@ body {
     height: 30px;
     color: #fff;
     border-radius: 5px;
-    padding: 0px 16px 3px;
+    padding: 0px 15px 5px;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
     background: transparent;
@@ -196,8 +196,14 @@ body {
       inset -4px -4px 6px 0 rgba(255,255,255,.2),
       inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
   }
+  .img-btn {
+    width: 40px;
+    cursor: pointer;
+    filter: invert(19%) sepia(99%) saturate(1744%) hue-rotate(249deg) brightness(96%);
+  }
+
 .song-view {       /* 조회수 출력 */
-    margin-top: 3px;
+    margin-top: 0px;
     margin-bottom: 0px;
     font-size: smaller;
 }
@@ -240,6 +246,7 @@ body {
 }
 .display-inline-block {
     display: inline-block;
+    cursor: pointer;
 }
 .display-flex {
     display: flex;

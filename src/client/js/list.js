@@ -16,8 +16,6 @@ function chartTitleClick() {
   
   plist_div.classList.add("hide");
   plist_t.classList.add("color-disable");
-
-  addplaylist("song", "artist", "idid");
 }
 
 function plistTitleClick() {
@@ -60,14 +58,15 @@ function playMusic() {
 /* 블록 만들기 */
 function addplaylist(song, artist, id) {
 
-  if(plist_div.querySelector("#idid") == null) {
+  //console.dir(plist_div.querySelector(`#${song}_${artist}`));
+  if(plist_div.querySelector(`#${song}_${artist}`) == null) {
 
     const element = document.createElement("div");
 
     const src = "static/img/" + song + ".jpeg";
 
     element.classList.add("song", "fx", "fade-in");
-    element.id = id;
+    element.id = song+"_"+artist;
     element.innerHTML = `
     ${element.innerHTML}
     <div class="song-img">
@@ -82,6 +81,7 @@ function addplaylist(song, artist, id) {
     </div>
     `;
 
+    // 특정버튼 또는 특정부분을 눌렀을때 사라지도록 수정해야함
     element.onclick = function() {
       plist_div.removeChild(this);
     }
@@ -91,16 +91,21 @@ function addplaylist(song, artist, id) {
 }
 
 /* 찜하기 기능 구현 */
-/*
-const like_btn = document.querySelector("#like-btn");
+const like_img = document.querySelectorAll(".img-btn");
 
-function likeBtnClick() {
+function likeImgClick() {
+  const parent = (this).parentNode.parentNode;
+  const artist = parent.childNodes[2].childNodes[0].innerText;
+  const song = parent.childNodes[2].childNodes[1].innerText;
+  const id = (this).id;
 
+  addplaylist(song, artist, id);
+  console.log(song + " " + artist + " " + id);
 }
 
-like_btn.addEventListener("click",likeBtnClick);
-*/
-
+[].forEach.call(like_img, function(button) {
+  button.addEventListener("click",likeImgClick);
+})
 
 
 

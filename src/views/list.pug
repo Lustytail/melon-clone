@@ -19,9 +19,9 @@ block content
                                     .song-info=list.artist
                                     h3.song-info=list.song
                                 .song-btn 
-                                    button.custom-btn.btn-2(
-                                        id=list.ytube_id
-                                    )= "▶"
+                                    img.img-btn(
+                                        src="static/img/add.svg"
+                                        id=list.ytube_id)
                                     p.song-view="(play : " + list.views + ")"
                     #playlist-div.song-list.hide
                 .list 
