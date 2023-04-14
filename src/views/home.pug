@@ -1,4 +1,7 @@
 extends base
 
 block content
-    div
+    form(action="/", method="post") 
+        h3="Who are you?"
+        input(type="text" name="usrId")
+        input(type="submit" value="Go!")

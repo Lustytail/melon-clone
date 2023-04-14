@@ -9,6 +9,7 @@ console.log(chart_t);
 console.dir(plist_t);
 const chart_div = document.querySelector("#chart-div");
 const plist_div = document.querySelector("#playlist-div");
+const save_btn = document.querySelector(".save");
 
 function chartTitleClick() {
   chart_t.classList.remove("color-disable");
@@ -16,11 +17,14 @@ function chartTitleClick() {
   
   plist_div.classList.add("hide");
   plist_t.classList.add("color-disable");
+  save_btn.classList.add("hide");
+
 }
 
 function plistTitleClick() {
   plist_div.classList.remove("hide");
   plist_t.classList.remove("color-disable");
+  save_btn.classList.remove("hide");
   
   chart_div.classList.add("hide");
   chart_t.classList.add("color-disable");
@@ -79,12 +83,11 @@ function addplaylist(song, artist, id) {
     <div class="song-btn">
       <button class="custom-btn btn-2" id=${id}>▶</button>
     </div>
+    <span class="close"></span>
     `;
 
-    // 특정버튼 또는 특정부분을 눌렀을때 사라지도록 수정해야함
-    element.onclick = function() {
-      plist_div.removeChild(this);
-    }
+    element.querySelector(".custom-btn").addEventListener("click",playMusic);
+    element.querySelector(".close").addEventListener("click",delClick);
 
     plist_div.appendChild(element);
   }
@@ -108,6 +111,81 @@ function likeImgClick() {
 })
 
 
+/* 찜 리스트 삭제 */
+const del = document.querySelectorAll(".close");
+
+function delClick() {
+  const parent = (this).parentNode.parentNode;
+  const this_node = (this).parentNode;
+  parent.removeChild(this_node);
+}
+
+[].forEach.call(del, function(button) {
+  button.addEventListener("click",delClick);
+})
+
+
+/* 플레이리스트 저장하기 */
+const save = document.querySelector(".save-btn");
+
+function savePlayList() {
+  const list = document.querySelector("#playlist-div").childNodes;
+  console.dir(list);
+  let saveData = [];
+
+  for(var i=0; i<=list.length-1;i++) {
+    console.dir(list[i]);
+    const artist = list[i].childNodes[3].childNodes[1].innerText;
+    const song = list[i].childNodes[3].childNodes[3].innerText;
+    const id = list[i].childNodes[5].childNodes[1].id;
+
+    const track = {
+      "song" : song,
+      "artist" : artist,
+      "ytube_id": id
+    };
+
+    console.log(track);
+    saveData.push(track);
+  }
+
+  console.log(saveData);
+
+  $.ajax({
+    url: "/save",
+    method: "post",
+    data: {
+      id: (this).id,
+      tracks: JSON.stringify(saveData)
+    },
+    sucess: (result) => {
+        console.log(result);
+    }
+  });
+/*
+  var form = document.createElement("form");
+  form.setAttribute("method", "post");
+  form.setAttribute("action","/save");
+
+  var inputId = document.createElement("input");
+  inputId.setAttribute("name", "id");
+  inputId.setAttribute("value", (this).id);
+  inputId.setAttribute("type", "hidden");
+  form.appendChild(inputId);
+
+  var inputTrack = document.createElement("input")
+  inputTrack.setAttribute("name", "tracks");
+  inputTrack.setAttribute("value", saveData.toString());
+  inputTrack.setAttribute("type", "hidden");
+  form.appendChild(inputTrack);
+
+  console.dir(form);
+
+  document.body.appendChild(form);
+  //form.submit();
+  */
+}
+save.addEventListener("click",savePlayList);
 
 
 

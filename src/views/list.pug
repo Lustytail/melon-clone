@@ -23,7 +23,20 @@ block content
                                         src="static/img/add.svg"
                                         id=list.ytube_id)
                                     p.song-view="(play : " + list.views + ")"
+                    .save.hide
+                        button.save-btn.fx.fade-in(id=usrId)="Save"
                     #playlist-div.song-list.hide
+                        each list in playList
+                            each track in list.tracks
+                                .song.fx.fade-in(id=`${track.song}_${track.artist}`) 
+                                    .song-img 
+                                        img.img-round(src="static/img/" + track.song + ".jpeg")
+                                    .song-text.fx
+                                        .song-info=track.artist
+                                        h3.song-info=track.song
+                                    .song-btn
+                                        button.custom-btn.btn-2(id=track.id)="▶"
+                                    span.close
                 .list 
                     h2.fx.fade-in= "Player" 
                     .list-video 

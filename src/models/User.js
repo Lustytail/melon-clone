@@ -9,10 +9,16 @@ const userSchema = new mongoose.Schema(
         tracks: [
             {
                 song: {
-                    type: String
+                    type: String,
+                    required: true
                 },
                 artist: {
-                    type: String
+                    type: String,
+                    required: true
+                },
+                id: {
+                    type: String,
+                    required: true
                 }
             }
         ]

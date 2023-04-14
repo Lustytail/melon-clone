@@ -31,6 +31,7 @@ body {
     align-items: center;
     height: 95vh;
     min-width: 800px;
+    overflow: hidden;
 }
 
 .hole-box {
@@ -58,6 +59,7 @@ body {
     height: 100%;
     box-sizing: border-box;
     min-width: 350px;
+    overflow: hidden;
 }
 .list {   /* 오른쪽 플레이 리스트 공간 */
     width: 60%;
@@ -208,6 +210,21 @@ body {
     font-size: smaller;
 }
 
+.save {
+    display: flex;
+    justify-content: right;
+    margin-right: 9%;
+}
+.save-btn {
+    color: antiquewhite;
+    height: 27px;
+    width: 60px;
+    background: linear-gradient(0deg, rgba(96,9,240,1) 0%, rgba(129,5,240,1) 100%);
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+}
 /* video 공간 */
 .list-video {
     display: flex;
@@ -257,3 +274,21 @@ body {
 .color-disable {
     color:rgb(152, 144, 133);
 }
+
+.close {
+    display: inline-block;
+}
+.close:after {
+    display: inline-block;
+    content: "\00d7";
+    font-size: 18pt;
+    line-height: 14px;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff8c;
+    color: #ffffff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
