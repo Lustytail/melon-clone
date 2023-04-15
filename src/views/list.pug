@@ -1,15 +1,15 @@
 extends base
 
 block content
-    .backgroud
+    .background
         .height-30
         .hole-box
             .player-wrap 
                 .view 
                     .display-flex 
-                        h2#chart-title.fx.fade-in.display-inline-block= "Charts"
-                        h2.fx.fade-in.display-inline-block= "|"
-                        h2#playlist-title.fx.fade-in.display-inline-block.color-disable= "My PlayList"
+                        h2#chart-title.fx.fade-in.display-inline-block.header-margin= "Charts"
+                        h2.fx.fade-in.display-inline-block.header-margin= "|"
+                        h2#playlist-title.fx.fade-in.display-inline-block.header-margin.color-disable= "My PlayList"
                     #chart-div.song-list
                         each list in songList
                             .song.fx.fade-in 
@@ -17,7 +17,7 @@ block content
                                     img.img-round(src="static/img/" + list.ytube_id + ".jpeg")
                                 .song-text.fx
                                     .song-info=list.artist
-                                    h3.song-info=list.song
+                                    h3.song-info.song-name=list.song
                                 .song-btn 
                                     img.img-btn(
                                         src="static/img/add.svg"
@@ -33,12 +33,12 @@ block content
                                         img.img-round(src="static/img/" + track.ytube_id + ".jpeg")
                                     .song-text.fx
                                         .song-info=track.artist
-                                        h3.song-info=track.song
+                                        h3.song-info.song-name=track.song
                                     .song-btn
                                         button.custom-btn.btn-2(id=track.ytube_id)="▶"
                                     span.close
                 .list 
-                    h2.fx.fade-in= "Player" 
+                    h2.fx.fade-in.header-margin= "Music Player" 
                     .list-video 
                         iframe.video(
                             id="ytplayer"

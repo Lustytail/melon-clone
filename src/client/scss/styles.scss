@@ -1,6 +1,6 @@
 // Config
 @import "./config/_variables.scss";
-//@import "./config/_reset.scss";
+@import "./config/_reset.scss";
 
 // Components
 
@@ -24,7 +24,52 @@ body {
 }
 */
 
-.backgroud {
+/* 홈화면  */
+.home-background {
+    background-color:  #11121e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 95vh;
+    min-width: 150px;
+    overflow: hidden;
+}
+.home-hole-box {
+    display:flex;
+    flex-direction: column;
+    min-height: 100px;
+    height: 30%;
+    width: 40%;
+    align-items: center;
+}
+.home-form {   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 5px;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #4a4d82;
+    box-sizing: border-box;
+    min-width: 90px;
+}
+.home-input-id {
+    width: 60%;
+    height: 35px;
+    font-size: 26px;
+    text-align: center;
+    color: lightblue;
+    border: 0;
+    border-radius: 30px;
+    outline: none;
+    background-color: #776a95;
+}
+
+/* 플레이리스트 화면 */
+.background {
     background-color:  #11121e;
     display: flex;
     flex-direction: column;
@@ -33,7 +78,6 @@ body {
     min-width: 800px;
     overflow: hidden;
 }
-
 .hole-box {
     display:flex;
     flex-direction: column;
@@ -42,6 +86,9 @@ body {
     width:90%;
     align-items: center;
 }
+
+
+
 /* 플레이어 공간*/
 .player-wrap {
     display: flex;
@@ -69,7 +116,14 @@ body {
     background-color: #4a4d82;
     box-sizing: border-box;
     min-width: 350px;
-    
+}
+
+/* 제목 여백 */
+.header-margin {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* 애니메이션 공간 */
@@ -152,11 +206,15 @@ body {
     box-sizing: border-box;
 }
 .song-info {
+    font-weight: bold;
     margin-top: 10px;
     margin-bottom: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+.song-name {
+    font-size: 1.2em;
 }
 
 
@@ -170,7 +228,7 @@ body {
     height: 30px;
     color: #fff;
     border-radius: 5px;
-    padding: 1px 16px 0px;
+    padding: 0px 15px 3px;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
     background: transparent;
@@ -267,6 +325,7 @@ body {
 }
 .display-flex {
     display: flex;
+    height: 50px;
 }
 .hide {
     display: none;
@@ -281,7 +340,7 @@ body {
 .close:after {
     display: inline-block;
     content: "\00d7";
-    font-size: 18pt;
+    font-size: 16pt;
     //line-height: 14px;
     text-align: center;
     width: 25px;

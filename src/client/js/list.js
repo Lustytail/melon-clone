@@ -102,7 +102,7 @@ function addplaylist(song, artist, id) {
     const artist_div = document.createElement("div");
     const song_h3 = document.createElement("h3");
     artist_div.classList.add("song-info");
-    song_h3.classList.add("song-info");
+    song_h3.classList.add("song-info", "song-name");
     artist_div.innerText = artist;
     song_h3.innerText = song;
     info_div.appendChild(artist_div);

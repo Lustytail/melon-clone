@@ -1,7 +1,11 @@
 extends base
 
 block content
-    form(action="/", method="post") 
-        h3="Who are you?"
-        input(type="text" name="usrId")
-        input(type="submit" value="Go!")
+    .home-background 
+        .height-30 
+        .home-hole-box.fx.fade-in 
+            form.home-form(action="/", method="post") 
+                h3.fx.fade-in.header-margin="Enter your ID"
+                input.home-input-id.fx.fade-in(type="text" name="usrId")
+                input.hide(type="submit" value="Go!")
+        .height-30
