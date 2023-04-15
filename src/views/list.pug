@@ -14,7 +14,7 @@ block content
                         each list in songList
                             .song.fx.fade-in 
                                 .song-img 
-                                    img.img-round(src="static/img/" + list.song + ".jpeg")
+                                    img.img-round(src="static/img/" + list.ytube_id + ".jpeg")
                                 .song-text.fx
                                     .song-info=list.artist
                                     h3.song-info=list.song
@@ -28,14 +28,14 @@ block content
                     #playlist-div.song-list.hide
                         each list in playList
                             each track in list.tracks
-                                .song.fx.fade-in(id=`${track.song}_${track.artist}`) 
+                                .song.fx.fade-in(id=`${track.artist}_${track.ytube_id}`) 
                                     .song-img 
-                                        img.img-round(src="static/img/" + track.song + ".jpeg")
+                                        img.img-round(src="static/img/" + track.ytube_id + ".jpeg")
                                     .song-text.fx
                                         .song-info=track.artist
                                         h3.song-info=track.song
                                     .song-btn
-                                        button.custom-btn.btn-2(id=track.id)="▶"
+                                        button.custom-btn.btn-2(id=track.ytube_id)="▶"
                                     span.close
                 .list 
                     h2.fx.fade-in= "Player" 

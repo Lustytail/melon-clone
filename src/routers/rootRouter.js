@@ -8,7 +8,7 @@ const rootRouter = express.Router();
 
 rootRouter.get("/", home);
 rootRouter.post("/", login);
-rootRouter.get("/list", songList);
+//rootRouter.get("/list", songList);
 rootRouter.post("/save", save);
 
 export default rootRouter;

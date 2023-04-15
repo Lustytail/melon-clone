@@ -63,15 +63,15 @@ function playMusic() {
 function addplaylist(song, artist, id) {
 
   //console.dir(plist_div.querySelector(`#${song}_${artist}`));
-  if(plist_div.querySelector(`#${song}_${artist}`) == null) {
+  if( document.querySelector(`#${artist}_${id}`) == null) {
 
     const element = document.createElement("div");
 
-    const src = "static/img/" + song + ".jpeg";
+    const src = "static/img/" + id + ".jpeg";
 
     element.classList.add("song", "fx", "fade-in");
-    element.id = song+"_"+artist;
-    element.innerHTML = `
+    element.id = artist+"_"+id;
+    /* element.innerHTML = `
     ${element.innerHTML}
     <div class="song-img">
       <img class="img-round" src=${src}></img>
@@ -85,6 +85,46 @@ function addplaylist(song, artist, id) {
     </div>
     <span class="close"></span>
     `;
+    */
+
+    const text_div = document.createTextNode("");
+
+    const img_div = document.createElement("div");
+    img_div.classList.add("song-img");
+    const img = document.createElement("img");
+    img.classList.add("img-round");
+    img.src = src;
+    img_div.appendChild(img);
+
+
+    const info_div = document.createElement("div");
+    info_div.classList.add("song-text", "fx");
+    const artist_div = document.createElement("div");
+    const song_h3 = document.createElement("h3");
+    artist_div.classList.add("song-info");
+    song_h3.classList.add("song-info");
+    artist_div.innerText = artist;
+    song_h3.innerText = song;
+    info_div.appendChild(artist_div);
+    info_div.appendChild(song_h3);
+
+    const btn_div = document.createElement("div");
+    btn_div.classList.add("song-btn");
+    const btn_btn = document.createElement("button");
+    btn_btn.classList.add("custom-btn", "btn-2");
+    btn_btn.id = id;
+    btn_btn.innerText = "▶";
+    btn_div.appendChild(btn_btn);
+
+    const span_div = document.createElement("span");
+    span_div.classList.add("close");
+
+    element.appendChild(text_div);
+    element.appendChild(img_div);
+    element.appendChild(info_div);
+    element.appendChild(btn_div);
+    element.appendChild(span_div);
+
 
     element.querySelector(".custom-btn").addEventListener("click",playMusic);
     element.querySelector(".close").addEventListener("click",delClick);
@@ -132,12 +172,12 @@ function savePlayList() {
   const list = document.querySelector("#playlist-div").childNodes;
   console.dir(list);
   let saveData = [];
+  const usrId = (this).id;
 
   for(var i=0; i<=list.length-1;i++) {
-    console.dir(list[i]);
-    const artist = list[i].childNodes[3].childNodes[1].innerText;
-    const song = list[i].childNodes[3].childNodes[3].innerText;
-    const id = list[i].childNodes[5].childNodes[1].id;
+    const artist = list[i].childNodes[2].childNodes[0].innerText;
+    const song = list[i].childNodes[2].childNodes[1].innerText;
+    const id = list[i].childNodes[3].childNodes[0].id;
 
     const track = {
       "song" : song,
@@ -145,23 +185,34 @@ function savePlayList() {
       "ytube_id": id
     };
 
-    console.log(track);
     saveData.push(track);
+    console.log(track);
   }
 
   console.log(saveData);
 
-  $.ajax({
-    url: "/save",
-    method: "post",
-    data: {
-      id: (this).id,
-      tracks: JSON.stringify(saveData)
-    },
-    sucess: (result) => {
-        console.log(result);
-    }
-  });
+  const sendData = 
+    fetch("/save", {
+      method: "post",
+      headers: {
+        "Content-type": "application/json",
+        "usrId": usrId
+      },
+      body: JSON.stringify({
+        "usrId": usrId,
+        "tracks": saveData
+      } )
+    }).then((response) => {
+      if(response.ok) {
+        return response.json();
+      }
+      return Promise.reject(response);
+    }).then((json) => {
+      alert(json.msg);
+    }).catch(function (err){
+      alert("I can't save playlist.");
+    });
+    
 /*
   var form = document.createElement("form");
   form.setAttribute("method", "post");

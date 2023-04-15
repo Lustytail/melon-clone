@@ -18,15 +18,15 @@ export const login = async (req, res) => {
   const songList = await Song.find({}, {_id : 0}).sort({"views":-1});
 
   console.log(songList);
-  console.log(playList[0]);
 
   return res.render("list", { pageTitle: "list", songList, usrId, playList});
 };
 
 export const save = async (req, res) => {
-  const usrId = req.body.id;
+  const usrId = req.body.usrId;
   const tracks = req.body.tracks;
-  
+  console.log(req.body);
+
   const user = new User({
     id: usrId,
     tracks: tracks
@@ -34,10 +34,15 @@ export const save = async (req, res) => {
 
   console.log(user);
 
+  const usrInfo = await User.find({id: usrId});
+  console.log(usrInfo);
+  if(usrInfo != null){
+    await User.deleteMany({id: usrId});
+  }
+
   user.save();
 
-  console.log(tracks);
-
-  return res;
+  res.status(200);
+  res.send({msg: "Your PlayList is saved"});
 
 }

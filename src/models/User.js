@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema(
                     type: String,
                     required: true
                 },
-                id: {
+                ytube_id: {
                     type: String,
                     required: true
                 }
