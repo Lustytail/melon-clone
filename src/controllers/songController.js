@@ -3,7 +3,16 @@ import Song from "../models/Song";
 import User from "../models/User";
 
 export const home = async (req, res) => {
-  return res.render("home", { pageTitle: "Home" });
+  if(req.session.usrId == null){
+    return res.render("home", { pageTitle: "Home" });
+  } else {
+    const usrId = req.session.usrId;
+    const playList = await User.find({id: usrId}, {_id:0, tracks:1});
+    const songList = await Song.find({}, {_id : 0}).sort({"views":-1});
+
+    return res.render("list", { pageTitle: "list", songList, usrId, playList});
+  }
+  
 };
 
 export const songList = async (req, res) => {
@@ -14,6 +23,7 @@ export const songList = async (req, res) => {
 
 export const login = async (req, res) => {
   const usrId = req.body.usrId;
+  req.session.usrId = usrId;
   const playList = await User.find({id: usrId}, {_id:0, tracks:1});
   const songList = await Song.find({}, {_id : 0}).sort({"views":-1});
 
