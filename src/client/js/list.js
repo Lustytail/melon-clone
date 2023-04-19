@@ -196,7 +196,6 @@ function savePlayList() {
       method: "post",
       headers: {
         "Content-type": "application/json",
-        "usrId": usrId
       },
       body: JSON.stringify({
         "usrId": usrId,
